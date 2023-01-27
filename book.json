@@ -1,7 +1,7 @@
 {
-    "title": "我的书籍标题",
+    "title": "OpenAI 入门到精通",
     "author": "陈希章",
-    "description": "书籍的描述信息，可用于SEO",
+    "description": "学习和实践OpenAI的理论和场景",
     "language": "zh-hans",
     "root": "docs",
     "plugins": [
@@ -9,7 +9,7 @@
     ],
     "pluginsConfig": {
         "analytics": {
-            "uid": "UA-194975404-1"
+            "uid": "G-JEPY0W4103"
         }
     }
 }
