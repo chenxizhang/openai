@@ -32,5 +32,5 @@ $content = Get-ChildItem docs\chapter*.md | `
 
 
 
-"# Summary `n* [简介](readme.md)" | Out-File docs\SUMMARY.MD
+"# Summary `n* [简介](README.md)" | Out-File docs\SUMMARY.MD
 $content | Out-File docs\SUMMARY.md -Append
