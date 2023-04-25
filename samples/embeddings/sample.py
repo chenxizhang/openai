@@ -14,3 +14,5 @@ RESOURCE_ENDPOINT = os.getenv("OPENAI_RESOURCE_ENDPOINT")
 
 openai.api_type = "azure"
 openai.api_key = os.getenv("OPENAI_API_KEY")
+openai.api_base = os.getenv("OPENAI_RESOURCE_ENDPOINT")
+openai.api_version = "2021-08-01"
