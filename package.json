@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "pwsh ./generatesummary.ps1 && honkit build . _site",
+    "build": "pwsh .\\generatesummary.ps1 && honkit build . _site",
     "serve": "honkit serve",
     "pdf": "honkit pdf"
   },
