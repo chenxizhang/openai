@@ -20,10 +20,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: generate the summary.md
-        shell: pwsh
-        run: |
-          "---`nchenxizhang`n" | Out-File -Encoding utf8 -FilePath docs/SUMMARY.md -append
       - name: Install & Build
         run: |
           npm install
