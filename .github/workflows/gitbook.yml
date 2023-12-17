@@ -19,11 +19,12 @@ jobs:
   build_and_deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: generate the summary.md
         shell: pwsh
         run: |
           .\generatesummary.ps1
+          Get-Content -Path .\SUMMARY.md -Raw
       - name: Install & Build
         run: |
           npm install
