@@ -24,7 +24,7 @@ jobs:
         shell: pwsh
         run: |
           .\generatesummary.ps1
-          Get-Content -Path .\SUMMARY.md -Raw
+          Get-Content -Path .\docs\SUMMARY.md -Raw
       - name: Install & Build
         run: |
           npm install
