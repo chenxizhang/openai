@@ -5,8 +5,7 @@
     "language": "zh-hans",
     "root": "docs",
     "plugins": [
-        "honkit-plugin-google-analytics",
-        "add-js"
+        "honkit-plugin-google-analytics"
     ],
     "pluginsConfig": {
         "analytics": {
