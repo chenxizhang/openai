@@ -23,8 +23,7 @@ jobs:
       - name: generate the summary.md
         shell: pwsh
         run: |
-          .\generatesummary.ps1
-          Get-Content -Path .\docs\SUMMARY.md -Raw
+          "---`nchenxizhang`n" | Out-File -Encoding utf8 -FilePath docs/SUMMARY.md -append
       - name: Install & Build
         run: |
           npm install
