@@ -27,11 +27,7 @@ $content = Get-ChildItem docs\chapter*.md `
 | Select-Object -Property Name, `
 @{Name = 'index'; Expression = { [convert]::ToInt16((Select-String -Pattern '\d+' -InputObject $_.Name).Matches.value) } } `
 | Sort-Object -Property index `
-| ForEach-Object { Get-MDSummary -file "docs\$($_.Name)" 
-} 
-
-Write-Host $content
-
+| ForEach-Object { Get-MDSummary -file "docs\$($_.Name)" } 
 
 "# Summary `n* [简介](README.md)" | Out-File docs\SUMMARY.MD
 $content | Out-File docs\SUMMARY.md -Append
