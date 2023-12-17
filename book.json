@@ -1,15 +1,21 @@
 {
-    "title": "OpenAI 入门到精通",
+    "title": "OpenAI & AIGC 入门到精通",
     "author": "陈希章",
-    "description": "学习和实践OpenAI的理论和场景",
+    "description": "学习和实践OpenAI 和AIGC 的理论和场景",
     "language": "zh-hans",
     "root": "docs",
     "plugins": [
-        "honkit-plugin-google-analytics"
+        "honkit-plugin-google-analytics",
+        "add-js"
     ],
     "pluginsConfig": {
         "analytics": {
             "uid": "G-JEPY0W4103"
+        },
+        "add-js": {
+            "js": [
+                "../scripts/clarity.js"
+            ]
         }
     }
 }
