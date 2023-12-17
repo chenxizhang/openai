@@ -20,6 +20,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+      - name: generate the summary.md
+        shell: pwsh
+        run: |
+          .\generatesummary.ps1
       - name: Install & Build
         run: |
           npm install
