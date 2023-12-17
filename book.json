@@ -11,11 +11,6 @@
     "pluginsConfig": {
         "analytics": {
             "uid": "G-JEPY0W4103"
-        },
-        "add-js": {
-            "js": [
-                "../scripts/clarity.js"
-            ]
         }
     }
 }
