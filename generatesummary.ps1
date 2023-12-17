@@ -23,14 +23,11 @@ function Get-MDSummary {
 }
 
 
-$content = Get-ChildItem docs\chapter*.md | `
-    Select-Object -Property Name,`
-     @{Name = 'index'; `
-     Expression = { [convert]::ToInt16( `
-        (Select-String -Pattern '\d+' -InputObject $_.Name).Matches.value) } } | `
-    Sort-Object -Property index |`
-    ForEach-Object {
-    Get-MDSummary -file "docs\$($_.Name)" 
+$content = Get-ChildItem docs\chapter*.md `
+    | Select-Object -Property Name,`
+     @{Name = 'index';Expression = { [convert]::ToInt16((Select-String -Pattern '\d+' -InputObject $_.Name).Matches.value) } } `
+    | Sort-Object -Property index ` 
+    | ForEach-Object { Get-MDSummary -file "docs\$($_.Name)" 
 } 
 
 
