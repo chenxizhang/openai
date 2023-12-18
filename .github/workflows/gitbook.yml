@@ -4,6 +4,9 @@ on:
     branches: [ "master" ]
     paths:
       - 'docs/**'
+      - 'book.json'
+      - 'package.json'
+      - 'scripts/**'
   workflow_dispatch:
 
 
