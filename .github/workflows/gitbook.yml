@@ -4,8 +4,6 @@ on:
     branches: [ "master" ]
     paths:
       - 'docs/**'
-  pull_request:
-    branches: [ "master" ]
   workflow_dispatch:
 
 

@@ -24,7 +24,7 @@ function Get-MDSummary {
 
     $tokens | ForEach-Object {
         $title = $_.Inline.Content.ToString().Substring($_.Span)
-        $file = [System.IO.Path]::GetFileName($file)
+        $file = $file.Replace("docs\", "").Replace("\", "/")
 
         if ($_.Level -eq 1) {
             Write-Output "$intent* [$title]($file)`n"
@@ -47,7 +47,7 @@ function Invoke-FolderProcess {
         [int]$level = 0
     )
     # 如果存在readme.md，则先处理readme.md
-    $readme = Join-Path $folder "READMD.md"
+    $readme = Join-Path $folder "README.md"
 
     if (Test-Path $readme) {
         $script:output += "$(Get-MDSummary -file $readme)`n"
