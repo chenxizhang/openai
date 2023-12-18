@@ -47,7 +47,7 @@ function Invoke-FolderProcess {
         [int]$level = 0
     )
     # 如果存在readme.md，则先处理readme.md
-    $readme = Join-Path $folder "readme.md"
+    $readme = Join-Path $folder "READMD.md"
 
     if (Test-Path $readme) {
         $script:output += "$(Get-MDSummary -file $readme)`n"
