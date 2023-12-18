@@ -13,27 +13,25 @@
 
 function Get-MDSummary {
     param (
-        [string]$file,
-        [int]$level = 0
+        [string]$file
     )
 
     $md = ConvertFrom-Markdown $file
     $tokens = $md.Tokens | Where-Object { $_.Level -in (1, 2) -and ($_.NewLine -ne "None") } | Select-Object -Property Inline, Level
 
-    $intent = "    " * $level
 
     $tokens | ForEach-Object {
         $title = $_.Inline.Content.ToString().Substring($_.Span)
         $file = $file.Replace("docs\", "").Replace("\", "/")
 
         if ($_.Level -eq 1) {
-            Write-Output "$intent* [$title]($file)`n"
+            Write-Output "* [$title]($file)`n"
         }
         else {
             $anchor = $title -replace "\s", "-"
             $anchor = $anchor -replace "\.", ""
             $anchor = $anchor.ToLower()
-            Write-Output "$intent    * [$title]($file#$anchor)`n"
+            Write-Output "    * [$title]($file#$anchor)`n"
         }
     }
 
@@ -71,7 +69,19 @@ function Invoke-FolderProcess {
         }
     }
     else {
-        $order = @()
+        
+        $files = Get-ChildItem $folder "*.md" | Where-Object { $_.Name -notin ('README.md', 'SUMMARY.md') } | Select-Object -ExpandProperty Name
+        $files | ForEach-Object {
+            $file = Join-Path $folder $_
+            $script:output += "$(Get-MDSummary -file $file -level $level)`n"
+        }
+
+        $folders = Get-ChildItem $folder -Directory | Select-Object -ExpandProperty Name
+        $folders | ForEach-Object {
+            $subfolder = Join-Path $folder $_
+            $script:output += "$('#'*($level+2)) $_`n"
+            Invoke-FolderProcess -folder $subfolder -level ($level + 1)
+        }
     }
 }
 
