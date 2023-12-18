@@ -57,14 +57,18 @@ function Invoke-FolderProcess {
         $order | ForEach-Object {
             if ($_ -like "*.md") {
                 $file = Join-Path $folder $_
-                $script:output += "$(Get-MDSummary -file $file -level $level)`n"
+                if(Test-Path $file) {
+                    $script:output += "$(Get-MDSummary -file $file -level $level)`n"
+                }
             }
             else {
                 $items = $_.Split("=")
-                $subfolder = $items[0]
-                $folderName = ($items.Count -eq 2) ? $items[1] : $subfolder
-                $script:output += "$('#'*($level+2)) $folderName`n"
-                Invoke-FolderProcess -folder (Join-Path $folder $subfolder) -level ($level + 1)
+                $subfolder =Join-Path $folder $items[0]
+                if(Test-Path $subfolder) {
+                    $folderName = ($items.Count -eq 2) ? $items[1] : $subfolder
+                    $script:output += "$('#'*($level+2)) $folderName`n"
+                    Invoke-FolderProcess -folder $subfolder -level ($level + 1)
+                }
             }
         }
     }
